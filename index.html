@@ -1,0 +1,89 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+    <script src="js/leaflet.js"></script>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script src="js/papaparse.min.js"></script>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+      }
+      #map {
+        width: 100vw;
+        height: 100vh;
+      }
+      .label {
+        width: 300px !important;
+        height: 50px;
+        color: #fff;
+        opacity: 0.8;
+      }
+    </style>
+  </head>
+  <body>
+    <div id='map'></div>
+  </body>
+<script>
+
+  var map;
+
+  document.addEventListener("DOMContentLoaded", function () {
+    map = createMap('map', 30, 0, 2);
+
+  });
+
+  function onClick(e) {
+    // e.latlng
+  }
+
+  function createMap(elemId, centerLat, centerLng, zoom) {
+      var map = new L.Map(elemId);
+
+      var osmUrl = 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png';
+      var osmAttrib = 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors';
+
+      var osmLayer = new L.TileLayer(osmUrl, {
+          minZoom: 2,
+          maxZoom: 20,
+          attribution: osmAttrib
+      });
+
+      map.setView(new L.LatLng(centerLat, centerLng), zoom);
+      map.addLayer(osmLayer);
+
+      Papa.parse("https://raw.githubusercontent.com/globalcycles/globalcycles.github.io/master/data.csv", {
+        download: true,
+        header: true,
+        complete: function(results) {
+          var locations = results.data;
+          locations.forEach(function(d,i){
+            if (d.name == "") return;
+            var marker = L.marker([parseInt(d.lat), parseInt(d.long)], {
+              icon: new L.DivIcon({
+                className: 'label',
+                html: d.flag + " " + d.name
+              })
+            }).addTo(map);
+            if (onClick != null) marker.on('click', onClick);
+            locations[i].marker = marker;
+          });
+        }
+      });
+
+      return map;
+  }
+
+  function addMarker(map, latLng, onClick) {
+      var marker = L.marker(latLng).addTo(map);
+      if (onClick !== null) {
+          marker.on('click', onClick);
+      }
+      return marker;
+  }
+
+</script>
+</html>
