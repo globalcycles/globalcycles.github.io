@@ -33,7 +33,11 @@
 
   document.addEventListener("DOMContentLoaded", function () {
     map = createMap('map', 30, 0, 2);
-
+    $.getJSON("https://raw.githubusercontent.com/globalcycles/globalcycles.github.io/master/data.json",
+      function(results) {
+        addLocations(results);
+      }
+    );
   });
 
   function onClick(e) {
@@ -55,26 +59,22 @@
       map.setView(new L.LatLng(centerLat, centerLng), zoom);
       map.addLayer(osmLayer);
 
-      Papa.parse("https://raw.githubusercontent.com/globalcycles/globalcycles.github.io/master/data.csv", {
-        download: true,
-        header: true,
-        complete: function(results) {
-          var locations = results.data;
-          locations.forEach(function(d,i){
-            if (d.name == "") return;
-            var marker = L.marker([parseInt(d.lat), parseInt(d.long)], {
-              icon: new L.DivIcon({
-                className: 'label',
-                html: d.flag + " " + d.name
-              })
-            }).addTo(map);
-            if (onClick != null) marker.on('click', onClick);
-            locations[i].marker = marker;
-          });
-        }
-      });
-
       return map;
+  }
+
+  function addLocations(results) {
+    var locations = results.locations;
+    locations.forEach(function(d,i){
+      if (d.name == "") return;
+      var marker = L.marker(d.location, {
+        icon: new L.DivIcon({
+          className: 'label',
+          html: d.flag + " " + d.name
+        })
+      }).addTo(map);
+      if (onClick != null) marker.on('click', onClick);
+      locations[i].marker = marker;
+    });
   }
 
   function addMarker(map, latLng, onClick) {
