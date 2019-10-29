@@ -1,10 +1,10 @@
 {
   "locations": [
     {"name": "Ecuador", "flag": "🇪🇨",
-    "location": [-1.160171,-78.432915], "start": "10/01/19", "end": null
+    "location": [-1.160171,-78.432915], "start": "10/01/19", "end": "10/14/19"
     },
     {"name": "West Papua", "flag": "🇵🇬",
-    "location": [-6.478378,145.241749], "start": "08/19/19", "end": null
+    "location": [-0.861453, 134.062042], "start": "08/19/19", "end": null
     },
     {"name": "Indonesia", "flag": "🇮🇩",
     "location": [-6.21462,106.84513], "start": "09/23/19", "end": null
