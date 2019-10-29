@@ -2,6 +2,7 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+    <link href="https://fonts.googleapis.com/css?family=Rubik:400,500,900&display=swap" rel="stylesheet">
     <script src="js/leaflet.js"></script>
     <script src="js/jquery-3.4.1.js"></script>
     <script src="js/papaparse.min.js"></script>
@@ -11,41 +12,103 @@
         padding: 0;
         width: 100vw;
         height: 100vh;
+        font-family: 'Rubik', sans-serif;
       }
       #map {
         width: 100vw;
         height: 100vh;
       }
       .label {
-        width: 300px !important;
+        font-size: 20px;
         height: 50px;
         color: #fff;
-        opacity: 0.8;
+      }
+      #overlay {
+        color: #fff;
+        position: absolute;
+        top: 0; bottom: 0; left: 0; right: 0;
+        z-index: 999;
+        pointer-events: none;
+      }
+      #title {
+        margin: 20px 20px 5px 20px;
+        font-weight: 500;
+        font-size: 20px;
+        letter-spacing: 5px;
+      }
+      #subtitle {
+        font-weight: 300;
+      }
+      #x {
+        display: none;
+        pointer-events: auto !important;
+        cursor: pointer;
+      }
+      .info {
+        display: none;
+        margin-left: 20px;
+      }
+      #info1 {
+        font-size: 14px;
+        letter-spacing: 2px;
       }
     </style>
   </head>
   <body>
+    <div id='overlay'>
+      <div id='title'>⨳ WORLD UPRISING<span id='subtitle'></span><span id="x"> x</span></div>
+      <div class='info' id='info1'></div>
+    </div>
     <div id='map'></div>
   </body>
 <script>
 
-  var map;
+  var map, popup;
+  var locations, selected = -1;
 
   document.addEventListener("DOMContentLoaded", function () {
     map = createMap('map', 30, 0, 2);
+    popup = L.popup();
     $.getJSON("https://raw.githubusercontent.com/globalcycles/globalcycles.github.io/master/data.json",
       function(results) {
         addLocations(results);
       }
     );
+    $('#x').on('click', function(){
+      $('#x').fadeOut();
+      $('.info').fadeOut();
+      selected = -1;
+      $('#subtitle').text("");
+      map.flyTo([30, 0], 2, {animate: true, duration: 3});
+    });
   });
 
   function onClick(e) {
-    // e.latlng
+    var id = this.id;
+    selected = id;
+    map.flyTo(e.latlng, 6, {animate: true, duration: 3});
+    $('#x').fadeIn();
+    var duration = locations[id].start + " — ";
+    duration += locations[id].end == null ? "Present" : locations[id].end;
+    $('.info').text(duration);
+    $('.info').fadeIn();
+    // popup.setLatLng(e.latlng).setContent("").openOn(map);
+  }
+
+  function onMouseOver(e) {
+    var id = this.id;
+    if (selected == -1) $('#subtitle').text(" " + locations[id].name);
+  }
+
+  function onMouseOut(e) {
+    var id = this.id;
+    if (selected == -1) $('#subtitle').text("");
   }
 
   function createMap(elemId, centerLat, centerLng, zoom) {
       var map = new L.Map(elemId);
+
+      map.zoomControl.setPosition('bottomleft');
 
       var osmUrl = 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png';
       var osmAttrib = 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors';
@@ -63,16 +126,21 @@
   }
 
   function addLocations(results) {
-    var locations = results.locations;
+    locations = results.locations;
     locations.forEach(function(d,i){
       if (d.name == "") return;
       var marker = L.marker(d.location, {
         icon: new L.DivIcon({
           className: 'label',
-          html: d.flag + " " + d.name
+          iconAnchor: [8, 17],
+          html: d.flag
         })
-      }).addTo(map);
+      })
+      marker.id = i;
+      marker.addTo(map);
       if (onClick != null) marker.on('click', onClick);
+      if (onMouseOver != null) marker.on('mouseover', onMouseOver);
+      if (onMouseOver != null) marker.on('mouseout', onMouseOut);
       locations[i].marker = marker;
     });
   }
