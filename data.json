@@ -1,49 +1,64 @@
 {
   "locations": [
     {"name": "Ecuador", "flag": "🇪🇨",
-    "location": [-1.160171,-78.432915], "start": "10/01/19", "end": "10/14/19"
+    "location": [-1.160171,-78.432915], "start": "10/01/19", "end": "10/14/19",
+    "image": "https://media3.s-nbcnews.com/j/newscms/2019_41/3046016/191010-ecuador-protests-cs-925a_fce27b9123eb34ce872f846260ba18bb.fit-760w.jpg"
     },
     {"name": "West Papua", "flag": "🇵🇬",
-    "location": [-0.861453, 134.062042], "start": "08/19/19", "end": null
+    "location": [-0.861453, 134.062042], "start": "08/19/19", "end": null,
+    "image": null
     },
     {"name": "Indonesia", "flag": "🇮🇩",
-    "location": [-6.21462,106.84513], "start": "09/23/19", "end": null
+    "location": [-6.21462,106.84513], "start": "09/23/19", "end": null,
+    "image": null
     },
     {"name": "Catalonia", "flag": "🏴󠁥",
-    "location": [41.617592,0.620015], "start": "10/14/19", "end": null
+    "location": [41.617592,0.620015], "start": "10/14/19", "end": null,
+    "image": null
     },
     {"name": "Hong Kong", "flag": "🇭🇰",
-    "location": [22.28552,114.15769], "start": "03/31/19", "end": null
+    "location": [22.28552,114.15769], "start": "03/31/19", "end": null,
+    "image": "https://s7d2.scene7.com/is/image/TWCNews/APTOPIX_Hong_Kong_Protests_02838"
     },
     {"name": "Chile", "flag": "🇨🇱",
-    "location": [-37.721037,-72.209377], "start": "10/07/19", "end": null
+    "location": [-33.447487,-70.673676], "start": "10/07/19", "end": null,
+    "image": null
     },
     {"name": "Haiti", "flag": "🇫🇷",
-    "location": [20.182436,-72.434515], "start": "07/07/19", "end": null
+    "location": [19.182436,-72.434515], "start": "07/07/19", "end": null,
+    "image": null
     },
     {"name": "France", "flag": "🇫🇷",
-    "location": [47.824905,2.618787], "start": "11/17/18", "end": null
+    "location": [47.824905,2.618787], "start": "11/17/18", "end": null,
+    "image": null
     },
     {"name": "Sudan", "flag": "🇸🇩",
-    "location": [13.831539,30.049948], "start": "04/11/19", "end": null
+    "location": [13.831539,30.049948], "start": "04/11/19", "end": null,
+    "image": "https://upload.wikimedia.org/wikipedia/en/9/91/Alaa_Salah_by_Lana_H._Haroun.jpg"
     },
     {"name": "Algeria", "flag": "🇩🇿",
-    "location": [28.16324,2.632388], "start": "02/16/19", "end": null
+    "location": [28.16324,2.632388], "start": "02/16/19", "end": null,
+    "image": null
     },
     {"name": "Iraq", "flag": "🇮🇶",
-    "location": [36.048056,43.404716], "start": "07/15/19", "end": null
+    "location": [36.048056,43.404716], "start": "07/15/19", "end": null,
+    "image": "https://pbs.twimg.com/media/EH6E7pvWkAAqpnd?format=jpg&name=medium"
     },
     {"name": "Egypt", "flag": "🇪🇬",
-    "location": [26.494184,29.871903], "start": "09/20/19", "end": null
+    "location": [26.494184,29.871903], "start": "09/20/19", "end": null,
+    "image": null
     },
     {"name": "Greece", "flag": "🇬🇷",
-    "location": [38.589021,23.828554], "start": "07/08/19", "end": null
+    "location": [38.589021,23.828554], "start": "07/08/19", "end": null,
+    "image": null
     },
     {"name": "Puerto Rico", "flag": "🇵🇷",
-    "location": [18.200178,-66.664513], "start": "07/08/19", "end": "08/12/19"
+    "location": [18.200178,-66.664513], "start": "07/08/19", "end": "08/12/19",
+    "image": null
     },
     {"name": "Lebanon", "flag": "🇱🇧",
-    "location": [33.7,35.8], "start": "10/17/19", "end": null
+    "location": [33.7,35.8], "start": "10/17/19", "end": null,
+    "image": null
     }
   ]
 }
