@@ -16,6 +16,9 @@
         height: 100vh;
         font-family: 'Rubik', sans-serif;
       }
+      .leaflet-container {
+        background-color: #262626;
+      }
       #map {
         width: 100vw;
         height: 100vh;
@@ -212,6 +215,7 @@
       var osmLayer = new L.TileLayer(osmUrl, {
           minZoom: 2,
           maxZoom: 20,
+          noWrap: true,
           attribution: osmAttrib
       });
 
