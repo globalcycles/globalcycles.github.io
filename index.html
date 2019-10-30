@@ -6,6 +6,7 @@
     <script src="js/leaflet.js"></script>
     <script src="js/jquery-3.4.1.js"></script>
     <script src="js/papaparse.min.js"></script>
+    <script src="js/d3.v5.js"></script>
     <style>
       html, body {
         margin: 0;
@@ -19,9 +20,48 @@
         height: 100vh;
       }
       .label {
-        font-size: 20px;
-        height: 50px;
-        color: #fff;
+        width: 100px !important;
+        height: 100px !important;
+        pointer-events: none !important;
+      }
+      .label:hover {
+        z-index: 999 !important;
+      }
+      .bubble {
+        width: 50px !important;
+        height: 50px !important;
+        overflow: hidden;
+        border-radius: 50%;
+        margin-left: 25px;
+        margin-top: 25px;
+        -webkit-transition: all 500ms ease;
+        -moz-transition: all 500ms ease;
+        -ms-transition: all 500ms ease;
+        -o-transition: all 500ms ease;
+        transition: all 500ms ease;
+        pointer-events: auto;
+        background-color: #666;
+        opacity: 0.8;
+      }
+      .label:hover .bubble, .label.active .bubble {
+        margin-left: 0px;
+        margin-top: 0px;
+        width: 100px !important;
+        height: 100px !important;
+        opacity: 1;
+      }
+      .thumbnail {
+        width: auto;
+        height: 110%;
+        -webkit-transition: all 500ms ease;
+        -moz-transition: all 500ms ease;
+        -ms-transition: all 500ms ease;
+        -o-transition: all 500ms ease;
+        transition: all 500ms ease;
+      }
+      .label:hover .thumbnail, .label.active .thumbnail {
+        width: auto;
+        height: 100%;
       }
       #overlay {
         color: #fff;
@@ -77,6 +117,7 @@
     $('#x').on('click', function(){
       $('#x').fadeOut();
       $('.info').fadeOut();
+      $('.label').removeClass('active');
       selected = -1;
       $('#subtitle').text("");
       map.flyTo([30, 0], 2, {animate: true, duration: 3});
@@ -85,6 +126,7 @@
 
   function onClick(e) {
     var id = this.id;
+    $(this._icon).addClass('active');
     selected = id;
     map.flyTo(e.latlng, 6, {animate: true, duration: 3});
     $('#x').fadeIn();
@@ -129,11 +171,12 @@
     locations = results.locations;
     locations.forEach(function(d,i){
       if (d.name == "") return;
+      var html = d.image == null ? "<div class='bubble'>"+ d.flag + "</div>" : "<div class='bubble'><img class='thumbnail' src='" + d.image + "'></img></div>";
       var marker = L.marker(d.location, {
         icon: new L.DivIcon({
           className: 'label',
-          iconAnchor: [8, 17],
-          html: d.flag
+          iconAnchor: [50, 50],
+          html: html
         })
       })
       marker.id = i;
@@ -143,14 +186,6 @@
       if (onMouseOver != null) marker.on('mouseout', onMouseOut);
       locations[i].marker = marker;
     });
-  }
-
-  function addMarker(map, latLng, onClick) {
-      var marker = L.marker(latLng).addTo(map);
-      if (onClick !== null) {
-          marker.on('click', onClick);
-      }
-      return marker;
   }
 
 </script>
