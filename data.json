@@ -2,63 +2,110 @@
   "locations": [
     {"name": "Ecuador", "flag": "🇪🇨",
     "location": [-1.160171,-78.432915], "start": "10/01/19", "end": "10/14/19",
-    "image": "https://media3.s-nbcnews.com/j/newscms/2019_41/3046016/191010-ecuador-protests-cs-925a_fce27b9123eb34ce872f846260ba18bb.fit-760w.jpg"
+    "image": "https://media3.s-nbcnews.com/j/newscms/2019_41/3046016/191010-ecuador-protests-cs-925a_fce27b9123eb34ce872f846260ba18bb.fit-760w.jpg",
+    "synopsis": "After government withdrawal of fuel subsidies on October 1st 2019, widespread protests break out centered on Quito, the capital. In the days that follow, massive numbers of indigenous people, mostly from rural areas, descend on the capital, fight police and military, erect burning barricades, and block oil prodection and distribution infrastructure, and defy a curfew imposed by the govermment. Much of the uprising activity seems to have subsided after the government capitulated to the movement's demand to reinstate fuel subsidies on October 13th.",
+    "quotes": ["Yes, we have to head out and protest but we must be clear that this is just the beginning and we have to venture beyond. We must be clear, in the last instance, that the rich and powerful are not going to pay for the crisis; that is not just a national or 'neo-liberal' problem but rather a global and captialist one; that all this will not be definitively eliminated unless we eliminate capitalism, which will continue to attack and worsen our lives with more crisis and austerity measures...", "", ""],
+    "spotlights": [
+      {"title": "Government flees capital of Quito", "date": "10/08/19", "location": [-0.180653, -78.467834], "image": "https://images.thestar.com/uS9SJZOWtzPeiCnlxjVlv92mxR8=/1086x869/smart/filters:cb(1570653911933)/https://www.thestar.com/content/dam/thestar/news/world/americas/2019/10/09/ecuadors-protesters-march-clashes-break-out-in-quito/DOR137-108_2019_203502.jpg"}
+    ]
     },
     {"name": "West Papua", "flag": "🇵🇬",
     "location": [-0.861453, 134.062042], "start": "08/19/19", "end": null,
-    "image": null
+    "image": null,
+    "synopsis": "",
+    "quotes": ["", "", ""],
+    "spotlights": []
     },
     {"name": "Indonesia", "flag": "🇮🇩",
     "location": [-6.21462,106.84513], "start": "09/23/19", "end": null,
-    "image": null
+    "image": null,
+    "synopsis": "",
+    "quotes": ["", "", ""],
+    "spotlights": []
     },
     {"name": "Catalonia", "flag": "🏴󠁥",
     "location": [41.617592,0.620015], "start": "10/14/19", "end": null,
-    "image": null
+    "image": null,
+    "synopsis": "",
+    "quotes": ["", "", ""],
+    "spotlights": []
     },
     {"name": "Hong Kong", "flag": "🇭🇰",
     "location": [22.28552,114.15769], "start": "03/31/19", "end": null,
-    "image": "https://s7d2.scene7.com/is/image/TWCNews/APTOPIX_Hong_Kong_Protests_02838"
+    "image": "https://s7d2.scene7.com/is/image/TWCNews/APTOPIX_Hong_Kong_Protests_02838",
+    "synopsis": "",
+    "quotes": ["", "", ""],
+    "spotlights": []
     },
     {"name": "Chile", "flag": "🇨🇱",
     "location": [-33.447487,-70.673676], "start": "10/07/19", "end": null,
-    "image": null
+    "image": null,
+    "synopsis": "",
+    "quotes": ["", "", ""],
+    "spotlights": []
     },
     {"name": "Haiti", "flag": "🇫🇷",
     "location": [19.182436,-72.434515], "start": "07/07/19", "end": null,
-    "image": null
+    "image": null,
+    "synopsis": "",
+    "quotes": ["", "", ""],
+    "spotlights": []
     },
     {"name": "France", "flag": "🇫🇷",
     "location": [47.824905,2.618787], "start": "11/17/18", "end": null,
-    "image": null
+    "image": null,
+    "synopsis": "",
+    "quotes": ["", "", ""],
+    "spotlights": []
     },
     {"name": "Sudan", "flag": "🇸🇩",
     "location": [13.831539,30.049948], "start": "04/11/19", "end": null,
-    "image": "https://upload.wikimedia.org/wikipedia/en/9/91/Alaa_Salah_by_Lana_H._Haroun.jpg"
+    "image": "https://upload.wikimedia.org/wikipedia/en/9/91/Alaa_Salah_by_Lana_H._Haroun.jpg",
+    "synopsis": "",
+    "quotes": ["", "", ""],
+    "spotlights": []
     },
     {"name": "Algeria", "flag": "🇩🇿",
     "location": [28.16324,2.632388], "start": "02/16/19", "end": null,
-    "image": null
+    "image": null,
+    "synopsis": "",
+    "quotes": ["", "", ""],
+    "spotlights": []
     },
     {"name": "Iraq", "flag": "🇮🇶",
     "location": [36.048056,43.404716], "start": "07/15/19", "end": null,
-    "image": "https://pbs.twimg.com/media/EH6E7pvWkAAqpnd?format=jpg&name=medium"
+    "image": "https://pbs.twimg.com/media/EH6E7pvWkAAqpnd?format=jpg&name=medium",
+    "synopsis": "",
+    "quotes": ["", "", ""],
+    "spotlights": []
     },
     {"name": "Egypt", "flag": "🇪🇬",
     "location": [26.494184,29.871903], "start": "09/20/19", "end": null,
-    "image": null
+    "image": null,
+    "synopsis": "",
+    "quotes": ["", "", ""],
+    "spotlights": []
     },
     {"name": "Greece", "flag": "🇬🇷",
     "location": [38.589021,23.828554], "start": "07/08/19", "end": null,
-    "image": null
+    "image": null,
+    "synopsis": "",
+    "quotes": ["", "", ""],
+    "spotlights": []
     },
     {"name": "Puerto Rico", "flag": "🇵🇷",
     "location": [18.200178,-66.664513], "start": "07/08/19", "end": "08/12/19",
-    "image": null
+    "image": null,
+    "synopsis": "",
+    "quotes": ["", "", ""],
+    "spotlights": []
     },
     {"name": "Lebanon", "flag": "🇱🇧",
     "location": [33.7,35.8], "start": "10/17/19", "end": null,
-    "image": null
+    "image": null,
+    "synopsis": "",
+    "quotes": ["", "", ""],
+    "spotlights": []
     }
   ]
 }
