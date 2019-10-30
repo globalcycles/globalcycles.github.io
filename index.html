@@ -2,7 +2,7 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
-    <link href="https://fonts.googleapis.com/css?family=Rubik:400,500,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,300i,400,500,700&display=swap" rel="stylesheet">
     <script src="js/leaflet.js"></script>
     <script src="js/jquery-3.4.1.js"></script>
     <script src="js/papaparse.min.js"></script>
@@ -91,6 +91,23 @@
       #info1 {
         font-size: 14px;
         letter-spacing: 2px;
+        margin-bottom: 5px;
+      }
+      #info2 {
+        width: 400px;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        font-size: 12px;
+        font-style: italic;
+        font-weight: 100;
+        border-bottom: 1px solid #fff;
+      }
+      #info3 {
+        width: 400px;
+        margin-bottom: 20px;
+      }
+      #info4 .date {
+        font-weight: 300;
       }
     </style>
   </head>
@@ -98,6 +115,9 @@
     <div id='overlay'>
       <div id='title'>⨳ WORLD UPRISING<span id='subtitle'></span><span id="x"> x</span></div>
       <div class='info' id='info1'></div>
+      <div class='info' id='info2'></div>
+      <div class='info' id='info3'></div>
+      <div class='info' id='info4'></div>
     </div>
     <div id='map'></div>
   </body>
@@ -116,6 +136,7 @@
     );
     $('#x').on('click', function(){
       $('#x').fadeOut();
+      $('.spotlight').fadeOut(300, function(){ $(this).remove(); });
       $('.info').fadeOut();
       $('.label').removeClass('active');
       selected = -1;
@@ -126,15 +147,36 @@
 
   function onClick(e) {
     var id = this.id;
+    $('.label').removeClass('active');
+    $('.info').html("");
     $(this._icon).addClass('active');
     selected = id;
+    var location = locations[id];
     map.flyTo(e.latlng, 6, {animate: true, duration: 3});
     $('#x').fadeIn();
-    var duration = locations[id].start + " — ";
-    duration += locations[id].end == null ? "Present" : locations[id].end;
-    $('.info').text(duration);
+    var duration = location.start + " — ";
+    duration += location.end == null ? "Present" : location.end;
+    $('#subtitle').text(" " + location.name);
+    $('#info1').text(duration);
+    $('#info2').text("\"" + location.quotes[0] + "\"");
+    $('#info3').text(location.synopsis);
     $('.info').fadeIn();
-    // popup.setLatLng(e.latlng).setContent("").openOn(map);
+
+    location.spotlights.forEach(function(d,j){
+      var html = d.image == null ? "<div class='bubble'></div>" : "<div class='bubble'><img class='thumbnail' src='" + d.image + "'></img></div>";
+      var marker = L.marker(d.location, {
+        icon: new L.DivIcon({
+          className: 'spotlight label',
+          iconAnchor: [50, 50],
+          html: html
+        })
+      })
+      marker.id = id + "_" + j;
+      marker.addTo(map);
+      // if (onClick != null) marker.on('click', onClick);
+      if (onMouseOver != null) marker.on('mouseover', onMouseOverSpotlight);
+      if (onMouseOver != null) marker.on('mouseout', onMouseOutSpotlight);
+    });
   }
 
   function onMouseOver(e) {
@@ -142,9 +184,20 @@
     if (selected == -1) $('#subtitle').text(" " + locations[id].name);
   }
 
+  function onMouseOverSpotlight(e) {
+    var id = this.id.split("_");
+    var spotlight = locations[parseInt(id[0])].spotlights[parseInt(id[1])];
+    $('#info4').html("<span class='date'>" + spotlight.date + " • </span>" + spotlight.title)
+    $('#info4').fadeIn();
+  }
+
   function onMouseOut(e) {
     var id = this.id;
     if (selected == -1) $('#subtitle').text("");
+  }
+
+  function onMouseOutSpotlight(e) {
+    $('#info4').fadeOut(300, function(){ $(this).html(""); });
   }
 
   function createMap(elemId, centerLat, centerLng, zoom) {
