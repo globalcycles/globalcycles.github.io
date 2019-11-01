@@ -9,6 +9,13 @@
       {"title": "Government flees capital of Quito", "date": "10/08/19", "location": [-0.180653, -78.467834], "image": "https://images.thestar.com/uS9SJZOWtzPeiCnlxjVlv92mxR8=/1086x869/smart/filters:cb(1570653911933)/https://www.thestar.com/content/dam/thestar/news/world/americas/2019/10/09/ecuadors-protesters-march-clashes-break-out-in-quito/DOR137-108_2019_203502.jpg"}
     ]
     },
+    {"name": "Panama", "flag": "🇵🇦",
+    "location": [8.983333, -79.516667], "start": "", "end": null,
+    "image": "",
+    "synopsis": "",
+    "quotes": ["", "", ""],
+    "spotlights": []
+    },
     {"name": "West Papua", "flag": "🇵🇬",
     "location": [-0.861453, 134.062042], "start": "08/19/19", "end": null,
     "image": null,
